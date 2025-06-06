@@ -3,22 +3,28 @@ package com.chasercorp.demo.entity;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "books")
 public class Book {
     @Id
     @GeneratedValue
-    private String id;
+    @Column(name = "id")
+    private Long id;
 
+    @Column(name = "title")
     private String title;
+
+    @Column(name = "isbn")
     private String isbn;
 
     @ManyToOne
+    @JoinColumn(name = "author_id")
     private Author author;
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

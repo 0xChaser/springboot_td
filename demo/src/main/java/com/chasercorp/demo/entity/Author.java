@@ -4,21 +4,24 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
+@Table(name = "authors")
 public class Author {
     @Id
     @GeneratedValue
-    private String id;
+    @Column(name = "id")
+    private Long id;
 
+    @Column(name = "name")
     private String name;
 
-    @OneToMany
+    @OneToMany(mappedBy = "author")
     private List<Book> books;
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
